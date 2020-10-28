@@ -1,0 +1,32 @@
+{
+  "name": "crud-autos",
+  "version": "1.0.0",
+  "description": "Un CRUD/ABM (Create, Retrieve, Update, Delete ó Alta, Baja, Modificación) de autos para una agencia de alquiler de autos.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Ja-boop/crud-autos.git"
+  },
+  "author": "ja-boop",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Ja-boop/crud-autos/issues"
+  },
+  "homepage": "https://github.com/Ja-boop/crud-autos#readme",
+  "dependencies": {
+    "bulma": "^0.9.1",
+    "dotenv": "^8.2.0",
+    "nunjucks": "^3.2.2",
+    "sqlite3": "^5.0.0"
+  },
+  "devDependencies": {
+    "@types/jest": "^26.0.15",
+    "cypress": "^5.5.0",
+    "eslint": "^7.12.1",
+    "jest": "^26.6.1",
+    "nodemon": "^2.0.6"
+  }
+}
