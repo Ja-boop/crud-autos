@@ -4,4 +4,4 @@ Un CRUD/ABM (Create, Retrieve, Update, Delete ó Alta, Baja, Modificación) de a
 
 # Diagrama
 
-![alt tag](http://url/to/crud-autosL1.png)
+![diagrama L1](./crud-autosL1.png)
