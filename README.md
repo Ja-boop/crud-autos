@@ -5,3 +5,7 @@ Un CRUD/ABM (Create, Retrieve, Update, Delete ó Alta, Baja, Modificación) de a
 # Diagrama
 
 ![diagrama L1](./crud-autosL1.png)
+
+![diagrama L2](./crud-autosL2.png)
+
+![diagrama L3](./crud-autosL3.png)
