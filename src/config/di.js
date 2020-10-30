@@ -1,0 +1,1 @@
+import DIContainer, { object, get, factory, IDIContainer } from "rsdi";
