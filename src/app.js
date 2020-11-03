@@ -5,13 +5,17 @@ const nunjucks = require('nunjucks');
 const app = express();
 const port = process.env.PORT || 8080;
 
-nunjucks.configure('src/module/views', {
+nunjucks.configure('src/module/views/layout', {
     autoescape: true,
     express: app
 });
 
+app.use('/public', express.static('public'));
+
 app.get('/', (req, res) => {
-    res.render('main.njk');
+    res.render('main.njk', {
+        github: "https://github.com/Ja-boop/crud-autos",
+    });
 })
 
 app.listen(port, () => {
