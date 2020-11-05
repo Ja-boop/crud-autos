@@ -15,7 +15,7 @@ app.use('/public', express.static('public'));
 app.get('/', (req, res) => {
     res.render('home.njk', {
         github: "https://github.com/Ja-boop/crud-autos",
-        bodyImagen: "public/images/paisaje.jpg",
+        bodyImagen: "public/images/autofocus.jpg",
         logo: "public/logo/logo-luzny.png",
     });
 })

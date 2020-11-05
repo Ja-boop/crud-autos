@@ -6,10 +6,6 @@
     height: 1000px;
 }
 
-.color-boton {
-    background-color: coral;
-}
-
 .cuadro {
     display: block;
     margin-left: 300px;
@@ -20,4 +16,12 @@
     position: absolute;
     border-color: white;
     
+}
+
+.absolute {
+    position: absolute;
+}
+
+.fondo {
+    position: relative;
 }
