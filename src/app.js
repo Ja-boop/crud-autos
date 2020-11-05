@@ -10,11 +10,12 @@ nunjucks.configure('src/module/views/layout', {
     express: app
 });
 
-app.use('/public', express.static('public'));
+app.use(express.static('public'));
 
 app.get('/', (req, res) => {
     res.render('home.njk', {
         github: "https://github.com/Ja-boop/crud-autos",
+        bodyImagen: "/images/paisaje.jpg",
     });
 })
 
