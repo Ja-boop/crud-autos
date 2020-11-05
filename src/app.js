@@ -1,9 +1,25 @@
 require('dotenv').config()
 const express = require('express');
+const nunjucks = require('nunjucks');
+
 const app = express();
-const PUERTO = 8080
+const port = process.env.PORT || 8080;
 
+nunjucks.configure('src/module/views/layout', {
+    autoescape: true,
+    express: app
+});
 
-app.listen(PUERTO, () => {
-    console.log(`Aplicacion escuchando en el puerto ${PUERTO}`);
+app.use('/public', express.static('public'));
+
+app.get('/', (req, res) => {
+    res.render('home.njk', {
+        github: "https://github.com/Ja-boop/crud-autos",
+        bodyImagen: "public/images/autofocus.jpg",
+        logo: "public/logo/logo-luzny.png",
+    });
+})
+
+app.listen(port, () => {
+    console.log(`Aplicacion escuchando en el puerto http://localhost:${port}/`);
 });

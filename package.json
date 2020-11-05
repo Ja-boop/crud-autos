@@ -4,7 +4,9 @@
   "description": "Un CRUD/ABM (Create, Retrieve, Update, Delete ó Alta, Baja, Modificación) de autos para una agencia de alquiler de autos.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon --inspect -e js,njk,css ./src/app.js",
+    "start": "node ./src/app.js"
   },
   "repository": {
     "type": "git",
