@@ -18,7 +18,7 @@ app.get('/', (req, res) => {
         bodyImagen: "public/images/autofocus.jpg",
         logo: "public/logo/logo-luzny.png",
     });
-})
+});
 
 app.listen(port, () => {
     console.log(`Aplicacion escuchando en el puerto http://localhost:${port}/`);
