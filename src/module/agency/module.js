@@ -4,7 +4,7 @@ const AgencyService = require('./service/agencyService');
 // const AgencyModel = require('./model/agencyModel');
 
 function init(app, container) {
-    const controller = container.get('ClubController');
+    const controller = container.get('AgencyController');
     controller.configureRoutes(app);
 }
 
