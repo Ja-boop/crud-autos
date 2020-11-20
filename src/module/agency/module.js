@@ -1,7 +1,7 @@
-const AgencyController = require('./controller/AgencyController');
-const AgencyRepository = require('./repository/sqlite/AgencyRepository');
-const AgencyService = require('./service/AgencyService');
-const AgencyModel = require('./model/AgencyModel');
+const AgencyController = require('./controller/agencyController');
+const AgencyRepository = require('./repository/sqlite/agencyRepository');
+const AgencyService = require('./service/agencyService');
+// const AgencyModel = require('./model/agencyModel');
 
 function init(app, container) {
     const controller = container.get('ClubController');
@@ -13,5 +13,4 @@ module.exports = {
     AgencyController,
     AgencyRepository,
     AgencyService,
-    AgencyModel,
 };

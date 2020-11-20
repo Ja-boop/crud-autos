@@ -3,6 +3,13 @@ const { default: DIContainer, object, get, factory } = require('rsdi');
 const multer = require('multer');
 const session = require('express-session');
 const { AgencyController, AgencyService, AgencyRepository } = require('../module/agency/module');
+const Sqlite3Database = require('better-sqlite3');
+
+function configureMainDatabaseAdapter() {
+    return new Sqlite3Database(process.env.DB_PATH, {
+        verbose: console.log,
+    });
+}
 
 function configureSession() {
     const ONE_WEEK_IN_SECONDS = 604800000;
@@ -34,6 +41,7 @@ function addCommonDefinitions(container) {
     container.addDefinitions({
         Session: factory(configureSession),
         Multer: factory(configureMulter),
+        MainDatabaseAdapter: factory(configureMainDatabaseAdapter),
     });
 }
 
@@ -41,7 +49,7 @@ function addAgencyModuleDefinitions(container) {
     container.addDefinitions({
         AgencyController: object(AgencyController).construct(get('Multer'), get('AgencyService')),
         AgencyService: object(AgencyService).construct(get('AgencyRepository')),
-        AgencyRepository: object(AgencyRepository).construct(get())
+        AgencyRepository: object(AgencyRepository).construct(get('MainDatabaseAdapter'))
     })
 }
 
