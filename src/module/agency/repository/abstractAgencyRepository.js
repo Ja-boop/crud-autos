@@ -9,11 +9,25 @@ module.exports = class AbstractAgencyRepository {
         }
     }
 
-    async save(auto) {}
+    /**
+     * @param {import('../entity/car')} car 
+     * @returns {import('../entity/car')}
+     */
+    async save(car) {}
 
+    /**
+     * @param {Number} id 
+     */
     async delete(id) {}
 
+    /**
+     * @param {Number} id 
+     * @returns {import('../entity/car')}
+     */
     async getById(id) {}
 
+    /**
+     * @returns {Array<import('../entity/car')>}
+     */
     async getAll() {}
 };
