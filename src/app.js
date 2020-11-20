@@ -2,24 +2,35 @@ require('dotenv').config()
 const express = require('express');
 const nunjucks = require('nunjucks');
 
+const configureDependecyInjection = require('./config/di'); 
+const { init: initAgencyModule } = require('./module/agency/module')
+
 const app = express();
 const port = process.env.PORT || 8080;
 
-nunjucks.configure('src/module/views/layout', {
+app.use('/public', express.static('public'));
+
+nunjucks.configure('src/module', {
     autoescape: true,
     express: app
 });
 
-app.use('/public', express.static('public'));
+const container = configureDependecyInjection(app);
+app.use(container.get('Session'));
 
-app.get('/', (req, res) => {
-    res.render('home.njk', {
-        github: "https://github.com/Ja-boop/crud-autos",
-        bodyImagen: "public/images/autofocus.jpg",
-        logo: "public/logo/logo-luzny.png",
-    });
-});
+initAgencyModule(app, container);
+
+const agencyController = container.get('AgencyController');
+app.get('/', agencyController.index.bind(agencyController));
 
 app.listen(port, () => {
     console.log(`Aplicacion escuchando en el puerto http://localhost:${port}/`);
 });
+
+// app.get('/', (req, res) => {
+//     res.render('home.njk', {
+//         github: "https://github.com/Ja-boop/crud-autos",
+//         bodyImagen: "public/images/autofocus.jpg",
+//         logo: "public/logo/logo-luzny.png",
+//     });
+// })
