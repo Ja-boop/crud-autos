@@ -1,0 +1,30 @@
+{% extends "./layout/template.njk" %}
+
+{% block contenido %}
+
+    {# NAVBAR #}
+    {% include "./layout/navbar.njk" %}
+    {# NAVBAR #}
+
+    {# FONDO #}
+    <div class="contain">
+
+        <div class="cuadro-opciones-form"  id="form">
+            <div class="field">
+                <label class="label">Brand</label>
+                <div class="control">
+                    <input class="input" type="text" placeholder="Fiat">
+                </div>
+            </div>
+            <div class="field">
+                <label class="label">Model</label>
+                <div class="control">
+                    <input class="input" type="text" placeholder="Duna">
+                </div>
+            </div>
+        </div>
+
+    </div>
+    {# FONDO #}
+
+{% endblock %}

@@ -25,3 +25,29 @@
 .fondo {
     position: relative;
 }
+
+body {
+    background-color: #00d1b2;
+}
+
+.contain {
+    height: 1000px;
+}
+
+.cuadro-opciones {
+    height: 700px;
+    margin-top: 50px;
+    margin-right: 200px;
+    margin-left: 200px;
+    background-color: white;
+
+}
+
+.cuadro-opciones-form {
+    height: 900px;
+    margin-top: 50px;
+    margin-right: 500px;
+    margin-left: 500px;
+    background-color: white;
+    padding: 3em;
+}
