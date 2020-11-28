@@ -1,10 +1,15 @@
 const Car = require('../entity/car');
 
+/**
+ *
+ * @param {Object} formData
+ * @returns Car
+ */
 function fromDataToEntity({
     id,
     brand,
     model,
-    image_url: imageURL,
+    image_url: imageUrl,
     year_manufactured: yearManufactured,
     kms,
     color,
@@ -16,7 +21,7 @@ function fromDataToEntity({
         id: Number(id),
         brand,
         model,
-        imageURL,
+        imageUrl,
         yearManufactured,
         kms,
         color,

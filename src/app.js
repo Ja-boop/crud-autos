@@ -1,7 +1,6 @@
 require('dotenv').config()
 const express = require('express');
 const nunjucks = require('nunjucks');
-const path = require('path');
 
 const configureDependecyInjection = require('./config/di'); 
 const { init: initAgencyModule } = require('./module/agency/module')

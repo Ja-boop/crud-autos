@@ -11,7 +11,10 @@
 <div class="contain">
     {# CUADRO PARA ALQUILAR AUTO #}
     <div class="cuadro-opciones">
-
+        {%for car in data.car%}
+        <h1>{{car.brand}}
+        <img src={{"/{{car.imageUrl}}"}}>
+        {%endfor%}
     </div>
     {# CUADRO PARA ALQUILAR AUTO #}
 </div>
