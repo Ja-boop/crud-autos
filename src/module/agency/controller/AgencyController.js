@@ -34,7 +34,6 @@ module.exports = class AgencyController extends AbstractController {
         const car = await this.agencyService.getAll();
         const { errors, messages } = req.session;
         res.render('views/home.njk', { data: { car }, messages, errors, logo: "/public/logo/logo-luzny.png", github: "https://github.com/Ja-boop/crud-autos" })
-        console.log(car);
         req.session.errors = [];
         req.session.messages = [];
     }
