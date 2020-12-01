@@ -51,6 +51,22 @@ module.exports = class AgencyController extends AbstractController {
      * @param {import('express').Response} res 
      */
     async save(req, res) {
-        
+        try {
+            const car = fromDataToEntity(req.body);
+            if(req.file) {
+                const { path } = req.file;
+                car.imageUrl = path;
+            }
+            const savedCar = await this.agencyService.save(car);
+            if (car.id) {
+                req.session.messages = [`El auto con ID ${car.id} se actualizó correctamente`];
+            } else {
+                req.session.messages = [`Se creo el auto con id ${savedCar.id} (${savedCar.name})`];
+            }
+            res.redirect('/');
+        } catch (e) {
+            req.session.errors = [e.messages, e.stack];
+            res.redirect('/');
+        }
     }
 };
