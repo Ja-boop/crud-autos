@@ -4,6 +4,9 @@ const CarNotFoundError = require('../error/carNotFoundError');
 const CarIdNotDefinedError = require('../error/carIDNotDefinedError');
 
 module.exports = class AgencyRepository extends AbstractAgencyRepository {
+    /**
+     * @param {import('better-sqlite3').Database} databaseAdapter 
+     */
     constructor(databaseAdapter) {
         super();
         this.databaseAdapter = databaseAdapter;
