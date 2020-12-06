@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 const AbstractAgencyRepositoryError = require('../repository/error/abstractAgencyRepositoryError');
 
 module.exports = class AbstractAgencyRepository {

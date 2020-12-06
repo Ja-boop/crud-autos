@@ -1,4 +1,4 @@
-const { fromDataToEntity } = require('../../mapper/autoMapper');
+const { fromDataToEntity } = require('../../mapper/carMapper');
 const AbstractAgencyRepository = require('../abstractAgencyRepository');
 const CarNotFoundError = require('../error/carNotFoundError');
 const CarIdNotDefinedError = require('../error/carIDNotDefinedError');
