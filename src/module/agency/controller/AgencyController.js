@@ -1,6 +1,6 @@
 const { fromDataToEntity } = require('../mapper/carMapper');
 const CarIDNotDefinedEroor = require('../repository/error/carIDNotDefinedError');
-const AbstractController = require('../controller/abstractController');
+const AbstractController = require('./abstractController');
 
 module.exports = class AgencyController extends AbstractController {
     /**
