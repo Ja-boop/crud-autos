@@ -1,4 +1,4 @@
-const { fromDataToEntity } = require('../mapper/autoMapper');
+const { fromDataToEntity } = require('../mapper/carMapper');
 const CarIDNotDefinedEroor = require('../repository/error/carIDNotDefinedError');
 const AbstractController = require('../controller/abstractController');
 

@@ -27,10 +27,3 @@ app.listen(port, () => {
     console.log(`Aplicacion escuchando en el puerto http://localhost:${port}/`);
 });
 
-// app.get('/', (req, res) => {
-//     res.render('home.njk', {
-//         github: "https://github.com/Ja-boop/crud-autos",
-//         bodyImagen: "public/images/autofocus.jpg",
-//         logo: "public/logo/logo-luzny.png",
-//     });
-// })
