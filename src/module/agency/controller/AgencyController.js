@@ -53,6 +53,7 @@ module.exports = class AgencyController extends AbstractController {
     async save(req, res) {
         try {
             const car = fromDataToEntity(req.body);
+            console.log(req.body);
             if(req.file) {
                 const { path } = req.file;
                 car.imageUrl = path;
