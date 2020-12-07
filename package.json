@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon --inspect -e js,njk,css ./src/app.js",
-    "start": "node ./src/app.js"
+    "start": "node ./src/app.js",
+    "test:dev": "jest --watch"
   },
   "repository": {
     "type": "git",

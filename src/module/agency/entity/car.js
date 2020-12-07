@@ -3,11 +3,11 @@ module.exports = class Car {
         id,
         brand,
         model,
-        image_url,
-        year_manufactured,
+        imageUrl,
+        yearManufactured,
         kms,
         color,
-        air_conditioner,
+        airConditioner,
         passengers,
         transmission,
 
@@ -15,11 +15,11 @@ module.exports = class Car {
         this.id = id;
         this.brand = brand;
         this.model = model;
-        this.image_url = image_url;
-        this.year_manufactured = year_manufactured;
+        this.imageUrl = imageUrl;
+        this.yearManufactured = yearManufactured;
         this.kms = kms;
         this.color = color;
-        this.air_conditioner = air_conditioner;
+        this.airConditioner = airConditioner;
         this.passengers = passengers;
         this.transmission = transmission;
     }

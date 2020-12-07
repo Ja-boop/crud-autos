@@ -1,9 +1,12 @@
-const { fromDataToEntity } = require('../../mapper/autoMapper');
+const { fromDataToEntity } = require('../../mapper/carMapper');
 const AbstractAgencyRepository = require('../abstractAgencyRepository');
 const CarNotFoundError = require('../error/carNotFoundError');
 const CarIdNotDefinedError = require('../error/carIDNotDefinedError');
 
 module.exports = class AgencyRepository extends AbstractAgencyRepository {
+    /**
+     * @param {import('better-sqlite3').Database} databaseAdapter 
+     */
     constructor(databaseAdapter) {
         super();
         this.databaseAdapter = databaseAdapter;
@@ -18,7 +21,7 @@ module.exports = class AgencyRepository extends AbstractAgencyRepository {
             id = car.id;
             const statement = this.databaseAdapter.prepare(`
                 UPDATE lista_vehiculos SET
-                    ${car.image_url ? `image_url = ?,` : ''}
+                    ${car.imageUrl ? `image_url = ?,` : ''}
                     brand = ?,
                     model = ?,
                     year_manufactured = ?,
@@ -33,16 +36,16 @@ module.exports = class AgencyRepository extends AbstractAgencyRepository {
             const params = [
                 car.brand,
                 car.model,
-                car.year_manufactured,
+                car.yearManufactured,
                 car.kms,
                 car.color,
-                car.air_conditioner,
+                car.airConditioner,
                 car.passengers,
                 car.transmission,
             ];
 
-            if (car.image_url) {
-                params.unshift(car.image_url);
+            if (car.imageUrl) {
+                params.unshift(car.imageUrl);
             }
 
             statement.run(params);
@@ -64,11 +67,11 @@ module.exports = class AgencyRepository extends AbstractAgencyRepository {
             const result = statement.run(
                 car.brand,
                 car.model,
-                car.image_url,
-                car.year_manufactured,
+                car.imageUrl,
+                car.yearManufactured,
                 car.kms,
                 car.color,
-                car.air_conditioner,
+                car.airConditioner,
                 car.passengers,
                 car.transmission
             );

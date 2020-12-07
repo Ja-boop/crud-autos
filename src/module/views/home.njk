@@ -1,4 +1,4 @@
-{% extends "./template.njk" %}
+{% extends "./layout/template.njk" %}
 
 {% block contenido %}
 
@@ -6,9 +6,20 @@
 {% include "./layout/navbar.njk" %}
 {# NAVBAR #}
 
-{# CUADRO PARA ALQUILAR AUTO #}
 
-{# CUADRO PARA ALQUILAR AUTO #}
+{# FONDO #}
+<div class="contain">
+    {# CUADRO PARA ALQUILAR AUTO #}
+    <div class="cuadro-opciones">
+        {%for car in data.car%}
+        <h1>{{car.brand}}
+        <img src="{{car.imageUrl}}" width="128" height="128" }}/>
+        {%endfor%}
+    </div>
+    {# CUADRO PARA ALQUILAR AUTO #}
+</div>
+{# FONDO #}
+
 
 
 {% endblock %}
