@@ -22,6 +22,7 @@ module.exports = class AgencyController extends AbstractController {
         app.get(`${ROUTE}/create/car`, this.create.bind(this));
         app.get(`${ROUTE}`, this.index.bind(this));
         app.post(`${ROUTE}/save`, this.uploadMiddleware.single('image_url'), this.save.bind(this));
+        app.get(`${ROUTE}/car/list`, this.carList.bind(this));
         // app.get(`${ROUTE}/view/:id`, this.view.bind(this));
         // app.get(`${ROUTE}/delete/:id`, this.delete.bind(this));
     }
@@ -69,5 +70,15 @@ module.exports = class AgencyController extends AbstractController {
             req.session.errors = [e.messages, e.stack];
             res.redirect('/');
         }
+    }
+
+    /**
+     * @param {import('express').Request} req
+     * @param {import('express').Response} res 
+     */
+    async carList(req, res) {
+        const car = await this.agencyService.getAll();
+        const {errors, messages} = req.session;
+        res.render('views/list.njk', { data: { car }, messages, errors, logo: "/public/logo/logo-luzny.png", github: "https://github.com/Ja-boop/crud-autos" })
     }
 };
