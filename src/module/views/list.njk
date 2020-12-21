@@ -23,6 +23,7 @@
       <th><abbr title="AirConditioner">AC</abbr></th>
       <th><abbr title="Passengers">Pass</abbr></th>
       <th><abbr title="Transmission">Trans</abbr></th>
+      <th><abbr title="Actions">Actions</abbr></th>
     </tr>
     </thead>
     <tfoot>
@@ -37,13 +38,14 @@
       <th><abbr title="AirConditioner">AC</abbr></th>
       <th><abbr title="Passengers">Pass</abbr></th>
       <th><abbr title="Transmission">Trans</abbr></th>
+      <th><abbr title="Actions">Actions</abbr></th>
     </tr>
     </tfoot>
     <tbody>
         {%for car in data.car%}
         <tr>
         <th>{{car.id}}</th>
-        <td><img src={{car.imageUrl}} width="150" height="250"/></td>
+        <td><img src="/{{car.imageUrl}}" width="150" height="250"/></td>
         <td>{{car.brand}}</td>
         <td>{{car.model}}</td>
         <td>{{car.yearManufactured}}</td>
@@ -52,6 +54,12 @@
         <td>{{car.airConditioner}}</td>
         <td>{{car.passengers}}</td>
         <td>{{car.transmission}}</td>
+        <td>
+          <br>
+          <a href="/agency/view/car/{{car.id}}">View</a>
+          <br>
+          <a href="/agency/car/delete/{{car.id}}">Delete</a>
+        </td>
         </tr>
         {%endfor%}
     </tbody>
