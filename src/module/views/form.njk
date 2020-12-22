@@ -1,26 +1,28 @@
 {% extends "./layout/template.njk" %}
 
 {% block contenido %}
+{% set car = data.car %}
 
-    {# NAVBAR #}
-    {% include "./layout/navbar.njk" %}
-    {# NAVBAR #}
+{# NAVBAR #}
+{% include "./layout/navbar.njk" %}
+{# NAVBAR #}
 
     {# FONDO #}
     <div class="contain">
 
         <div class="cuadro-opciones-form">
             <form action="/agency/save" method="POST" enctype="multipart/form-data">
+            <input type="hidden" name="id" value="{{car.id}}" readonly />
                 <div class="field">
                     <label class="label">Brand</label>
                     <div class="control">
-                        <input class="input" type="text" name="brand" placeholder="Fiat">
+                        <input class="input" type="text" name="brand" placeholder="Fiat" value="{{car.brand}}">
                     </div>
                 </div>
                 <div class="field">
                     <label class="label">Model</label>
                     <div class="control">
-                        <input class="input" type="text" name="model" placeholder="Duna">
+                        <input class="input" type="text" name="model" placeholder="Duna" value="{{car.model}}">
                     </div>
                 </div>
                 <label class="label">Car Picture</label>
@@ -44,26 +46,26 @@
                 <div class="field">
                     <label class="label">Year Manufactured</label>
                     <div class="control">
-                        <input class="input" type="number" name="year_manufactured" placeholder="1994">
+                        <input class="input" type="number" name="year_manufactured" placeholder="1994" value="{{car.yearManufactured}}">
                     </div>
                 </div>
                 <div class="field">
                     <label class="label">Kilometers</label>
                     <div class="control">
-                        <input class="input" type="number" name="kms" placeholder="150000">
+                        <input class="input" type="number" name="kms" placeholder="150000" value="{{car.kms}}">
                     </div>
                 </div>
                 <div class="field">
                     <label class="label">Color</label>
                     <div class="control">
-                        <input class="input" type="text" name="color" placeholder="Red">
+                        <input class="input" type="text" name="color" placeholder="Red" value="{{car.color}}">
                     </div>
                 </div>
                 <div class="field">
                     <label class="label">Air Conditioner</label>
                     <div class="control">
                         <div class="select">
-                            <select name="air_conditioner">
+                            <select name="air_conditioner" value="{{car.airConditioner}}">
                                 <option>Yes</option>
                                 <option>No</option>
                             </select>
@@ -73,13 +75,13 @@
                 <div class="field">
                     <label class="label">Passengers/Doors</label>
                     <div class="control">
-                        <input class="input" type="number" name="passengers" placeholder="4">
+                        <input class="input" type="number" name="passengers" placeholder="4" value="{{car.passengers}}">
                     </div>
                 </div>
                 <div class="field">
                     <label class="label">Transmission</label>
                     <div class="control">
-                        <input class="input" type="text" name="transmission" placeholder="Manual, Automatic, etc">
+                        <input class="input" type="text" name="transmission" placeholder="Manual, Automatic, etc" value="{{car.transmission}}">
                     </div>
                 </div>
                 <div class="field is-grouped">

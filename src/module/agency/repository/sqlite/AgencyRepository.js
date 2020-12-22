@@ -42,11 +42,14 @@ module.exports = class AgencyRepository extends AbstractAgencyRepository {
                 car.airConditioner,
                 car.passengers,
                 car.transmission,
+                car.id,
             ];
 
             if (car.imageUrl) {
                 params.unshift(car.imageUrl);
             }
+
+            console.log(car);
 
             statement.run(params);
         } else {
@@ -75,6 +78,8 @@ module.exports = class AgencyRepository extends AbstractAgencyRepository {
                 car.passengers,
                 car.transmission
             );
+
+            console.log(car);
 
             id = result.lastInsertRowid;
         }

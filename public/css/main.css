@@ -6,6 +6,12 @@
     height: 1000px;
 }
 
+br {
+    display: block;
+    content: "";
+    margin-top: 10px;
+ }
+
 .cuadro {
     display: block;
     margin-left: 300px;
@@ -52,4 +58,6 @@ body {
     padding: 3em;
 }
 
-
+.lista-vehiculos {
+    margin-top: 20px;
+}

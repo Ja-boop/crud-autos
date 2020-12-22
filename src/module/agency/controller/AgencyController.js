@@ -20,10 +20,11 @@ module.exports = class AgencyController extends AbstractController {
         const ROUTE = this.ROUTE_BASE;
         
         app.get(`${ROUTE}/create/car`, this.create.bind(this));
-        app.get(`${ROUTE}`, this.index.bind(this));
+        app.get(`${ROUTE}/`, this.index.bind(this));
         app.post(`${ROUTE}/save`, this.uploadMiddleware.single('image_url'), this.save.bind(this));
-        // app.get(`${ROUTE}/view/:id`, this.view.bind(this));
-        // app.get(`${ROUTE}/delete/:id`, this.delete.bind(this));
+        app.get(`${ROUTE}/car/list`, this.carList.bind(this));
+        app.get(`${ROUTE}/car/delete/:id`, this.delete.bind(this));
+        app.get(`${ROUTE}/view/car/:id`, this.view.bind(this));
     }
 
     /**
@@ -62,12 +63,59 @@ module.exports = class AgencyController extends AbstractController {
             if (car.id) {
                 req.session.messages = [`El auto con ID ${car.id} se actualizó correctamente`];
             } else {
-                req.session.messages = [`Se creo el auto con id ${savedCar.id} (${savedCar.name})`];
+                req.session.messages = [`Se creo el auto con id ${savedCar.id} (${savedCar.brand})`];
             }
-            res.redirect('/');
+            res.redirect('/agency/car/list');
         } catch (e) {
             req.session.errors = [e.messages, e.stack];
-            res.redirect('/');
+            console.log(e);
+            res.redirect('/agency/car/list');
+        }
+    }
+
+    /**
+     * @param {import('express').Request} req
+     * @param {import('express').Response} res 
+     */
+    async carList(req, res) {
+        const car = await this.agencyService.getAll();
+        const {errors, messages} = req.session;
+        res.render('views/list.njk', { data: { car }, messages, errors, logo: "/public/logo/logo-luzny.png", github: "https://github.com/Ja-boop/crud-autos" })
+    }
+
+    /**
+     * @param {import('express').Request} req
+     * @param {import('express').Response} res 
+     */
+    async delete(req, res) {
+        try {
+            const { id } = req.params;
+            const car = await this.agencyService.getById(id);
+            await this.agencyService.delete(car);
+            req.session.messages = [`Se eliminó el vehiculo con ID: ${id} (${car.name})`];
+        } catch (e) {
+            req.session.errors = [e.message];
+        }
+        res.redirect('/agency/car/list')
+    }
+
+    /**
+     * @param {import('express').Request} req
+     * @param {import('express').Response} res
+     */
+    async view(req, res) {
+        const { id } = req.params;
+        if(!id) {
+            throw new CarIDNotDefinedEroor();
+        }
+        try {
+            const car = await this.agencyService.getById(id);
+            console.log(car);
+            res.render('views/form.njk', { data: { car } });
+        } catch (e) {
+            console.log(e);
+            req.session.errors = [e.message];
+            res.redirect('/agency/car/list')
         }
     }
 };
