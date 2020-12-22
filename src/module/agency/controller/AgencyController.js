@@ -63,13 +63,13 @@ module.exports = class AgencyController extends AbstractController {
             if (car.id) {
                 req.session.messages = [`El auto con ID ${car.id} se actualizó correctamente`];
             } else {
-                req.session.messages = [`Se creo el auto con id ${savedCar.id} (${savedCar.name})`];
+                req.session.messages = [`Se creo el auto con id ${savedCar.id} (${savedCar.brand})`];
             }
             res.redirect('/agency/car/list');
         } catch (e) {
             req.session.errors = [e.messages, e.stack];
             console.log(e);
-            res.redirect('/');
+            res.redirect('/agency/car/list');
         }
     }
 
@@ -110,8 +110,10 @@ module.exports = class AgencyController extends AbstractController {
         }
         try {
             const car = await this.agencyService.getById(id);
+            console.log(car);
             res.render('views/form.njk', { data: { car } });
         } catch (e) {
+            console.log(e);
             req.session.errors = [e.message];
             res.redirect('/agency/car/list')
         }
