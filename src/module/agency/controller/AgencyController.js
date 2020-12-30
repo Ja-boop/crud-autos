@@ -25,6 +25,7 @@ module.exports = class AgencyController extends AbstractController {
         app.get(`${ROUTE}/car/list`, this.carList.bind(this));
         app.get(`${ROUTE}/car/delete/:id`, this.delete.bind(this));
         app.get(`${ROUTE}/view/car/:id`, this.view.bind(this));
+        app.get(`${ROUTE}/rent/car/list`, this.rentList.bind(this));
     }
 
     /**
@@ -118,4 +119,16 @@ module.exports = class AgencyController extends AbstractController {
             res.redirect('/agency/car/list')
         }
     }
+
+    /**
+     * @param {import('express').Request} req
+     * @param {import('express').Response} res
+     */
+    async rentList(req, res) {
+        const car = await this.agencyService.getAll();
+        const {errors, messages} = req.session;
+        res.render('views/rentList.njk', { data: { car }, messages, errors, logo: "/public/logo/logo-luzny.png", github: "https://github.com/Ja-boop/crud-autos" });
+    }
 };
+
+
