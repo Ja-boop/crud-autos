@@ -32,10 +32,6 @@ br {
     position: relative;
 }
 
-body {
-    background-color: #00d1b2;
-}
-
 .contain {
     height: 1000px;
 }
@@ -60,4 +56,9 @@ body {
 
 .lista-vehiculos {
     margin-top: 20px;
+}
+
+#register-form {
+    padding: 100px;
+    width: 800px;
 }

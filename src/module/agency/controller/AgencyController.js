@@ -1,5 +1,5 @@
 const { fromDataToEntity } = require('../mapper/carMapper');
-const CarIDNotDefinedEroor = require('../repository/error/carIDNotDefinedError');
+const CarIDNotDefinedError = require('../repository/error/carIDNotDefinedError');
 const AbstractController = require('./abstractController');
 
 module.exports = class AgencyController extends AbstractController {
@@ -26,6 +26,63 @@ module.exports = class AgencyController extends AbstractController {
         app.get(`${ROUTE}/car/delete/:id`, this.delete.bind(this));
         app.get(`${ROUTE}/view/car/:id`, this.view.bind(this));
         app.get(`${ROUTE}/rent/car/list`, this.rentList.bind(this));
+        app.get(`${ROUTE}/rent/car/:id`, this.rentCar.bind(this));
+        app.post(`${ROUTE}/rent/car/save`, this.rentSave.bind(this));
+        app.get(`${ROUTE}/sign-up`, this.signUp.bind(this));
+        app.post(`${ROUTE}/register`, this.register.bind(this));
+    }
+
+    /**
+     * @param {import('express').Request} req
+     * @param {import('express').Response} res
+     */
+    async rentSave(req, res) {
+        
+    }
+
+    /**
+     * @param {import('express').Request} req
+     * @param {import('express').Response} res
+     */
+    async rentCar(req, res) {
+        const { id } = req.params;
+        let today = new Date();
+
+        let year = today.getFullYear();
+        let month = ("0" + (today.getMonth() + 1)).slice(-2);
+        let date = ("0" + today.getDate()).slice(-2);
+
+        let currentDate = `${year}-${month}-${date}`
+        console.log(currentDate)
+        if(!id) {
+            throw new CarIDNotDefinedError();
+        }
+        try {
+            const car = await this.agencyService.getById(id);
+            res.render('views/rentCar.njk', { data: { car }, logo: "/public/logo/logo-luzny.png", github: "https://github.com/Ja-boop/crud-autos", currentDate})
+        } catch (e) {
+            console.log(e);
+            req.session.errors = [e.message];
+            res.redirect('/agency/car/list')
+        }
+        
+    }
+
+    /**
+     * @param {import('express').Request} req
+     * @param {import('express').Response} res
+     */
+    async register(req, res) {
+        console.log(req.body);
+        res.send('Received ')
+    }
+
+    /**
+     * @param {import('express').Request} req
+     * @param {import('express').Response} res
+     */
+    async signUp(req, res) {
+        res.render('views/register.njk', { logo: "/public/logo/logo-luzny.png", github: "https://github.com/Ja-boop/crud-autos" })
     }
 
     /**
@@ -107,7 +164,7 @@ module.exports = class AgencyController extends AbstractController {
     async view(req, res) {
         const { id } = req.params;
         if(!id) {
-            throw new CarIDNotDefinedEroor();
+            throw new CarIDNotDefinedError();
         }
         try {
             const car = await this.agencyService.getById(id);
