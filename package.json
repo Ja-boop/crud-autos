@@ -20,7 +20,7 @@
   },
   "homepage": "https://github.com/Ja-boop/crud-autos#readme",
   "dependencies": {
-    "axios": "^0.21.0",
+    "axios": "^0.21.1",
     "better-sqlite3": "^7.1.1",
     "bulma": "^0.9.1",
     "cookie-session": "^1.4.0",
